@@ -9,6 +9,16 @@ namespace MJGame
 	static class Program
 	{
 		public static string[] inventory = new string[10];
+		
+		// Create all places
+		public static Place_frontHouse frontHouse = new Place_frontHouse();
+		public static Place_yard yard = new Place_yard();
+		public static Place_foyer foyer = new Place_foyer();
+		public static Place_hallway hallway = new Place_hallway();
+
+
+
+
 
 		static void Initialize() 
 		{
@@ -37,10 +47,8 @@ namespace MJGame
 			Console.ReadKey();
 
 
-
-			Place_frontHouse fh;
-			fh = new Place_frontHouse();
-			fh.Arrived();
+			//Start the game
+			frontHouse.Arrived();
 	
 						
 

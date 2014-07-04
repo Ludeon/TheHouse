@@ -11,22 +11,21 @@ namespace MJGame
 		protected string introText;
 
 
-		protected abstract void HandleInput(string inp);
-
 		public void Arrived()
 		{
 			Console.Clear();
-			Console.WriteLine(introText);
+			Console.WriteLine( GetIntroText() );
 			
-			string inp;
-			inp = Program.GetInput();
-			
+			string inp = Program.GetInput();
 			HandleInput( inp );
 		}
 
-		
+		protected virtual string GetIntroText()
+		{
+			return introText;
+		}
 
-
+		protected abstract void HandleInput(string inp);
 	}
 
 
@@ -42,33 +41,108 @@ namespace MJGame
 			
 			if (inp == "open door" || inp == "open" || inp == "go in")
 			{
-				//PAGE 3a
-				Console.Clear();
-				Console.WriteLine("A large dog is sitting in the entrance. He looks at you and says, \"What do you want, fucka?\"");
-
-				string inp3a = Program.GetInput();
-
-				if (inp3a == "greet kindly" || inp3a == "say hello")
-				{ Console.WriteLine(" Get out of my house you ape!");
-
-				}
-				else if (inp3a == "give biscuit")
-				{//PAGE 4
-				Console.Clear();
-				Console.WriteLine(" The dog catches the buiscuit you tossed him, munches quietly and promptly dies on the carpet. \n You proceed down the hall.");
-				}
+				Program.foyer.Arrived();
 			
 			}
+
 			if (inp == "go to the yard")
 			{
-				//PAGE 3b
-				Console.Clear();
-				Console.WriteLine("A collection of cement dinosaurs stare balefully back at you from the yard.\n\nThey terrify you. You decide to enter the house.");
-				Console.ReadKey();
-				Arrived();
+				Program.yard.Arrived();
 			}
 		}
+		
 	}
 
 
+
+	class Place_yard : Place
+	 {
+		public Place_yard()
+		{
+			introText= "A collection of cement dinosaurs stare balefully back at you from the yard.\n\nThey terrify you. You decide to enter the house.";
+		}
+		
+		
+		protected override void HandleInput(string inp)
+		{
+			Program.frontHouse.Arrived();
+		}
+	 }
+	
+	class Place_foyer : Place
+	{ 
+		bool dogDead = false;
+
+		
+		protected override string GetIntroText()
+		{
+			if (dogDead == false )
+			{
+			return "A large dog is sitting in the entrance. He looks at you and says, \"What do you want, fucka?\"";
+			}
+
+			else //if (dogDead == true )
+			{
+			return "Flies lazily buzz around the dea dog carcass. You think to yourself, \"Good riddance asshole!\"";
+			}
+		}
+		
+		protected override void HandleInput(string inp)
+		{
+			if (dogDead == false) 
+			{
+				if (inp == "greet kindly" || inp == "say hello")
+				{
+					Console.WriteLine(" Get out of my house you ape!");
+					string inp2 = Program.GetInput();
+					HandleInput( inp2 );
+				}
+				else if (inp == "go down hall" || inp == "jump over dog")
+				{
+					Console.WriteLine("The dog briskly jumps in front of you and blocks your way");
+					string inp2 = Program.GetInput();
+					HandleInput( inp2 );
+				}
+				else if (inp == "go outside" )
+				{
+					Program.frontHouse.Arrived();
+				}
+				else if (inp == "give biscuit")
+				{
+					
+					Console.Clear();
+					Console.WriteLine(" The dog catches the buiscuit you tossed him, munches quietly and promptly dies on the carpet.");
+					dogDead = true;
+					string inp2 = Program.GetInput();
+					HandleInput( inp2 );
+				}
+			}
+			else //if (dogDead == true) 
+			{
+				if (inp == "go down hall" || inp == "jump over dog")
+				{
+					Program.hallway.Arrived();
+				}
+				else if (inp == "go outside")
+				{
+					Program.frontHouse.Arrived();
+				}
+			}
+		}
+	}
+	
+
+
+	class Place_hallway : Place
+	{
+		protected override string GetIntroText()
+		{
+			return " this part of the game is not finished yet. now go back and marvel at the fact that the game knows that the dog is dead or not!!!!";
+		}
+
+		protected override void HandleInput(string inp)
+		{
+
+		}
+	}
 }
