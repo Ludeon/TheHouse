@@ -8,7 +8,7 @@ namespace MJGame
 {
 	static class Program
 	{
-		public static string[] inventory = new string[10];
+		
 		
 		// Create all places
 		public static Place_frontHouse frontHouse = new Place_frontHouse();
@@ -20,23 +20,11 @@ namespace MJGame
 
 
 
-		static void Initialize() 
-		{
-			inventory[0] = "cyanide laced dog biscuit";
-			inventory[1] = "anal lubricant";
-			inventory[2] = "peanut butter";
-			inventory[3] = " riding crop";
-			inventory[4] = "small kitten";
-			inventory[5] = "shiv";
-			inventory[6] = " The Bible";
-			inventory[7] = "bloody used condom";
-			inventory[8] = " Manet art work";
-	
-		}
+		
 		
 		static void Main(string[] args)
 		{
-			Initialize();
+			CurrentInventory.Initialize();
 
 			//PAGE 1
 			Console.WriteLine("MJ's Game");
@@ -101,21 +89,7 @@ namespace MJGame
 
 
 
-	public static class InvUtil
-	{
-		public static void Writeinventory()
-		{
-			int invcount = 0;
-
-			loopstart:
-
-			Console.WriteLine(Program.inventory[invcount]);
-			invcount = invcount + 1;
-			if (invcount == 9) return; 
-			goto loopstart;
-
-		}
-	}
+	
 }
 
 

@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrentInventory.cs" />
+    <Compile Include="InvUtil.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

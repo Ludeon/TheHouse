@@ -113,6 +113,7 @@ namespace MJGame
 					Console.Clear();
 					Console.WriteLine(" The dog catches the buiscuit you tossed him, munches quietly and promptly dies on the carpet.");
 					dogDead = true;
+
 					string inp2 = Program.GetInput();
 					HandleInput( inp2 );
 				}
