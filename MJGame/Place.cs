@@ -8,21 +8,55 @@ namespace MJGame
 {
 	abstract class Place
 	{
+		//Vars
 		protected string introText;
+		public List<Item> groundItems = new List<Item>();
 
-
+		//Methods
 		public void Arrived()
 		{
+			Program.curPlace = this;
+
 			Console.Clear();
 			Console.WriteLine( GetIntroText() );
-			
+			Console.WriteLine("On the ground:");
+
+			int i = 0;
+			while (i < groundItems.Count)
+			{
+				Console.WriteLine(groundItems[i].label);
+				i = i + 1;
+			}
+
 			string inp = Program.GetInput();
 			HandleInput( inp );
+			HandleGlobalInput( inp);
 		}
 
 		protected virtual string GetIntroText()
 		{
 			return introText;
+		}
+		
+		private void HandleGlobalInput(string inp)
+		{
+			if (inp.Substring(0, 5) == "drop ")
+			{ 
+				Item chosenItem = null;
+
+				string itemName = inp.Substring(5); 
+				
+				int i = 0;
+				while (i < Inventory.invList.Count)
+				{
+					if (Inventory.invList[i].label == itemName)
+						chosenItem=Inventory.invList[i];
+					i = i +1;
+				}
+
+				Inventory.Drop( chosenItem );
+			}
+		
 		}
 
 		protected abstract void HandleInput(string inp);
@@ -34,6 +68,11 @@ namespace MJGame
 		public Place_frontHouse()
 		{
 			introText= "You are standing in front of a rural house. It is ramshackle and shitty-looking.";
+		
+			groundItems.Add(new Item("anal lubricant"));
+			groundItems.Add(new Item("peanut butter"));
+			groundItems.Add(new Item("riding crop"));
+			groundItems.Add(new Item("small kitten"));
 		}
 
 		protected override void HandleInput(string inp)

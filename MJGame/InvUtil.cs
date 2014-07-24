@@ -13,14 +13,11 @@ namespace MJGame
 		public static void Writeinventory()
 		{
 			int i = 0;
-
-			loopstart:
-
-			Console.WriteLine(CurrentInventory.inventory[i].label);
-			i = i + 1;
-			if (i == 9) return; 
-			goto loopstart;
-
+			while (i < Inventory.invList.Count)
+			{
+				Console.WriteLine(Inventory.invList[i].label);
+				i = i + 1;
+			}
 		}
 	}
 	

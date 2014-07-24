@@ -8,7 +8,7 @@ namespace MJGame
 {
 	static class Program
 	{
-		
+		public static Place curPlace;
 		
 		// Create all places
 		public static Place_frontHouse frontHouse = new Place_frontHouse();
@@ -24,7 +24,7 @@ namespace MJGame
 		
 		static void Main(string[] args)
 		{
-			CurrentInventory.Initialize();
+			Inventory.Initialize();
 
 			//PAGE 1
 			Console.WriteLine("MJ's Game");
@@ -34,10 +34,13 @@ namespace MJGame
 			Console.WriteLine("Press a key to begin.");
 			Console.ReadKey();
 
+			curPlace = frontHouse;
 
 			//Start the game
-			frontHouse.Arrived();
-	
+			while(true)
+			{
+				curPlace.Arrived();
+			}
 						
 
 			Console.ReadKey();
