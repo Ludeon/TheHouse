@@ -24,6 +24,18 @@ namespace MJGame
 	
 		}
 
+		public static Item GetNamed(string itemName)
+		{
+			int i = 0;
+			while (i < invList.Count)
+			{
+				if (invList[i].label == itemName)
+					return invList[i];
+				i = i + 1;
+			}
+			return null;
+		}
+
 
 		public static void Drop(Item itemToDrop)
 		{
@@ -34,6 +46,16 @@ namespace MJGame
 			Program.curPlace.groundItems.Add(itemToDrop);
 
 		
+		}
+		public static void Take(Item itemToTake)
+		{
+			invList.Add(itemToTake);
+
+			//----
+
+			Program.curPlace.groundItems.Remove(itemToTake);
+
+
 		}
 
 	}

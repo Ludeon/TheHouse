@@ -10,3 +10,9 @@ C:\DevMJ\TheHouse\MJGame\obj\Debug\MJGame.pdb
 C:\DevMJ\TheHouse\MJGame\bin\Debug\MJGame.exe
 C:\DevMJ\TheHouse\MJGame\bin\Debug\MJGame.pdb
 C:\DevMJ\TheHouse\MJGame\obj\Debug\MJGame.csprojResolveAssemblyReference.cache
+C:\MJDev\thehouse\MJGame\bin\Debug\MJGame.exe.config
+C:\MJDev\thehouse\MJGame\obj\Debug\MJGame.exe
+C:\MJDev\thehouse\MJGame\obj\Debug\MJGame.pdb
+C:\MJDev\thehouse\MJGame\bin\Debug\MJGame.exe
+C:\MJDev\thehouse\MJGame\bin\Debug\MJGame.pdb
+C:\MJDev\thehouse\MJGame\obj\Debug\MJGame.csprojResolveAssemblyReference.cache

@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InputProcessor.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InvUtil.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Place.cs" />
+    <Compile Include="Place_foyer.cs" />
+    <Compile Include="Place_frontHouse.cs" />
+    <Compile Include="Place_hallway.cs" />
+    <Compile Include="Place_yard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

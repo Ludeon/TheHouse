@@ -8,6 +8,7 @@ namespace MJGame
 {
 	static class Program
 	{
+		public static bool wantExit = false;
 		public static Place curPlace;
 		
 		// Create all places
@@ -37,13 +38,22 @@ namespace MJGame
 			curPlace = frontHouse;
 
 			//Start the game
-			while(true)
+			while(!wantExit)
 			{
 				curPlace.Arrived();
-			}
-						
 
-			Console.ReadKey();
+				while (!wantExit)
+				{
+					string inp = Program.GetInput();
+
+					if (InputProcessor.HandleInput_Inventory(inp) )
+						continue;
+					if (curPlace.HandleInput_Place(inp))
+						continue;
+
+					Console.WriteLine("Unrecognized command. Cock blocking.");
+				}
+			}
 		}
 
 
@@ -76,14 +86,7 @@ namespace MJGame
 				goto start;
 			}
 
-			if (playerInput == "inventory")
-			{
-				InvUtil.Writeinventory();
-
-
-				goto start;
-			}
-
+			
 			return playerInput;
 		}
 	}
